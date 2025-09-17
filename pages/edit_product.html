@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Product - Student Marketplace Seller</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fstudentma6080back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-surface-50 min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-white border-b border-border sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                        <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="ml-2 text-xl font-semibold text-text-primary">StudentSell</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="product_dashboard.html" class="text-text-secondary hover:text-primary transition-colors">My Products</a>
+                    <a href="upload_product.html" class="text-text-secondary hover:text-primary transition-colors">Upload Product</a>
+                    <a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-colors">Account</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-surface-100 transition-colors" onclick="toggleMobileMenu()">
+                    <svg class="h-6 w-6 text-text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div id="mobileMenu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-2">
+                    <a href="product_dashboard.html" class="text-text-secondary hover:text-primary px-4 py-2 rounded-lg hover:bg-surface-100 transition-colors">My Products</a>
+                    <a href="upload_product.html" class="text-text-secondary hover:text-primary px-4 py-2 rounded-lg hover:bg-surface-100 transition-colors">Upload Product</a>
+                    <a href="javascript:void(0)" class="text-text-secondary hover:text-primary px-4 py-2 rounded-lg hover:bg-surface-100 transition-colors">Account</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <div class="flex items-center gap-4 mb-4">
+                <a href="product_dashboard.html" class="p-2 rounded-lg hover:bg-surface-100 transition-colors">
+                    <svg class="h-5 w-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </a>
+                <div>
+                    <h1 class="text-3xl font-semibold text-text-primary">Edit Product</h1>
+                    <p class="text-text-secondary">Update your product listing details</p>
+                </div>
+            </div>
+            
+            <!-- Change History Indicator -->
+            <div class="bg-warning-50 border border-warning-100 rounded-lg p-4">
+                <div class="flex items-center gap-2">
+                    <svg class="h-5 w-5 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="text-sm font-medium text-text-primary">Last modified: September 15, 2025 at 2:30 PM</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Form -->
+        <form id="editProductForm" class="space-y-8">
+            <!-- Product Images Section -->
+            <section class="card">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-semibold text-text-primary">Product Images</h2>
+                    <span class="text-sm text-text-secondary">Up to 8 images</span>
+                </div>
+
+                <!-- Existing Images -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-6" id="existingImages">
+                    <!-- Existing Image 1 -->
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Product Image 1" class="w-full h-32 object-cover rounded-lg border border-border" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center gap-2">
+                            <button type="button" class="p-2 bg-white rounded-full hover:bg-surface-100 transition-colors" onclick="moveImageUp(0)">
+                                <svg class="h-4 w-4 text-text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                                </svg>
+                            </button>
+                            <button type="button" class="p-2 bg-white rounded-full hover:bg-surface-100 transition-colors" onclick="removeImage(0)">
+                                <svg class="h-4 w-4 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="absolute top-2 left-2 bg-primary text-white text-xs px-2 py-1 rounded-full">1</div>
+                    </div>
+
+                    <!-- Existing Image 2 -->
+                    <div class="relative group">
+                        <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Product Image 2" class="w-full h-32 object-cover rounded-lg border border-border" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center gap-2">
+                            <button type="button" class="p-2 bg-white rounded-full hover:bg-surface-100 transition-colors" onclick="moveImageUp(1)">
+                                <svg class="h-4 w-4 text-text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                                </svg>
+                            </button>
+                            <button type="button" class="p-2 bg-white rounded-full hover:bg-surface-100 transition-colors" onclick="removeImage(1)">
+                                <svg class="h-4 w-4 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="absolute top-2 left-2 bg-primary text-white text-xs px-2 py-1 rounded-full">2</div>
+                    </div>
+
+                    <!-- Add More Images Button -->
+                    <div class="relative">
+                        <input type="file" id="additionalImages" multiple accept="image/*" class="hidden" onchange="handleAdditionalImages(event)" />
+                        <label for="additionalImages" class="w-full h-32 border-2 border-dashed border-border rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-primary hover:bg-primary-50 transition-colors">
+                            <svg class="h-8 w-8 text-text-tertiary mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                            </svg>
+                            <span class="text-sm text-text-secondary">Add Images</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Image Upload Guidelines -->
+                <div class="bg-surface-50 rounded-lg p-4">
+                    <h3 class="font-medium text-text-primary mb-2">Image Guidelines</h3>
+                    <ul class="text-sm text-text-secondary space-y-1">
+                        <li>• Use high-quality images (minimum 800x600 pixels)</li>
+                        <li>• First image will be used as the main thumbnail</li>
+                        <li>• Supported formats: JPG, PNG, WebP (max 5MB each)</li>
+                        <li>• Show different angles and details of your product</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Product Information Section -->
+            <section class="card">
+                <h2 class="text-xl font-semibold text-text-primary mb-6">Product Information</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Product Name -->
+                    <div class="lg:col-span-2">
+                        <label for="productName" class="block text-sm font-medium text-text-primary mb-2">
+                            Product Name <span class="text-error">*</span>
+                            <span id="nameChangeIndicator" class="hidden ml-2 text-xs text-warning bg-warning-100 px-2 py-1 rounded-full">Modified</span>
+                        </label>
+                        <input type="text" id="productName" name="productName" value="Calculus: Early Transcendentals 8th Edition" class="form-input" placeholder="Enter product name" maxlength="100" required onchange="markFieldAsChanged('name')" />
+                        <div class="flex justify-between mt-1">
+                            <span id="nameError" class="text-sm text-error hidden">Product name is required</span>
+                            <span class="text-sm text-text-tertiary"><span id="nameCount">41</span>/100</span>
+                        </div>
+                    </div>
+
+                    <!-- Category -->
+                    <div>
+                        <label for="category" class="block text-sm font-medium text-text-primary mb-2">
+                            Category <span class="text-error">*</span>
+                            <span id="categoryChangeIndicator" class="hidden ml-2 text-xs text-warning bg-warning-100 px-2 py-1 rounded-full">Modified</span>
+                        </label>
+                        <select id="category" name="category" class="form-input" required onchange="markFieldAsChanged('category')">
+                            <option value>Select a category</option>
+                            <option value="textbooks" selected>Textbooks</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="furniture">Furniture</option>
+                            <option value="clothing">Clothing & Accessories</option>
+                            <option value="services">Services</option>
+                            <option value="events">Event Tickets</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <span id="categoryError" class="text-sm text-error hidden">Please select a category</span>
+                    </div>
+
+                    <!-- Condition -->
+                    <div>
+                        <label for="condition" class="block text-sm font-medium text-text-primary mb-2">
+                            Condition <span class="text-error">*</span>
+                        </label>
+                        <select id="condition" name="condition" class="form-input" required>
+                            <option value>Select condition</option>
+                            <option value="new">New</option>
+                            <option value="like-new" selected>Like New</option>
+                            <option value="good">Good</option>
+                            <option value="fair">Fair</option>
+                            <option value="poor">Poor</option>
+                        </select>
+                        <span id="conditionError" class="text-sm text-error hidden">Please select a condition</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing Section -->
+            <section class="card">
+                <h2 class="text-xl font-semibold text-text-primary mb-6">Pricing</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Regular Price -->
+                    <div>
+                        <label for="price" class="block text-sm font-medium text-text-primary mb-2">
+                            Price <span class="text-error">*</span>
+                            <span id="priceChangeIndicator" class="hidden ml-2 text-xs text-warning bg-warning-100 px-2 py-1 rounded-full">Modified</span>
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-secondary">$</span>
+                            <input type="number" id="price" name="price" value="89.99" class="form-input pl-8" placeholder="0.00" min="0" step="0.01" required onchange="markFieldAsChanged('price')" />
+                        </div>
+                        <span id="priceError" class="text-sm text-error hidden">Please enter a valid price</span>
+                    </div>
+
+                    <!-- Discount Price -->
+                    <div>
+                        <label for="discountPrice" class="block text-sm font-medium text-text-primary mb-2">
+                            Discount Price (Optional)
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-secondary">$</span>
+                            <input type="number" id="discountPrice" name="discountPrice" class="form-input pl-8" placeholder="0.00" min="0" step="0.01" />
+                        </div>
+                        <p class="text-sm text-text-secondary mt-1">Leave empty if no discount</p>
+                    </div>
+                </div>
+
+                <!-- Price Preview -->
+                <div class="mt-6 p-4 bg-surface-50 rounded-lg">
+                    <h3 class="font-medium text-text-primary mb-2">Price Preview</h3>
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl font-semibold text-text-primary" id="displayPrice">$89.99</span>
+                        <span class="text-lg text-text-tertiary line-through hidden" id="displayOriginalPrice">$120.00</span>
+                        <span class="text-sm bg-accent text-white px-2 py-1 rounded-full hidden" id="discountBadge">25% OFF</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Description Section -->
+            <section class="card">
+                <h2 class="text-xl font-semibold text-text-primary mb-6">Description</h2>
+                
+                <div>
+                    <label for="description" class="block text-sm font-medium text-text-primary mb-2">
+                        Product Description <span class="text-error">*</span>
+                        <span id="descriptionChangeIndicator" class="hidden ml-2 text-xs text-warning bg-warning-100 px-2 py-1 rounded-full">Modified</span>
+                    </label>
+                    <textarea id="description" name="description" rows="6" class="form-input resize-none" placeholder="Describe your product in detail. Include condition, features, and any relevant information buyers should know." maxlength="500" required onchange="markFieldAsChanged('description')">Excellent condition calculus textbook used for one semester. All pages intact, minimal highlighting. Perfect for MATH 151/152 courses. Includes access code (unused). Originally purchased for $120, selling due to course completion.</textarea>
+                    <div class="flex justify-between mt-2">
+                        <span id="descriptionError" class="text-sm text-error hidden">Description is required</span>
+                        <span class="text-sm text-text-tertiary"><span id="descriptionCount">247</span>/500</span>
+                    </div>
+                </div>
+
+                <!-- Description Tips -->
+                <div class="mt-4 p-4 bg-surface-50 rounded-lg">
+                    <h3 class="font-medium text-text-primary mb-2">Writing Tips</h3>
+                    <ul class="text-sm text-text-secondary space-y-1">
+                        <li>• Be honest about the condition and any flaws</li>
+                        <li>• Include relevant course numbers or compatibility info</li>
+                        <li>• Mention pickup/delivery preferences</li>
+                        <li>• Add any accessories or extras included</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Status Section -->
+            <section class="card">
+                <h2 class="text-xl font-semibold text-text-primary mb-6">Publication Status</h2>
+                
+                <div class="flex items-center justify-between p-4 bg-surface-50 rounded-lg">
+                    <div>
+                        <h3 class="font-medium text-text-primary">Product Visibility</h3>
+                        <p class="text-sm text-text-secondary">Control whether your product is visible to buyers</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-sm text-text-secondary">Draft</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="publishStatus" class="sr-only peer" checked onchange="togglePublishStatus()" />
+                            <div class="w-11 h-6 bg-surface-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-100 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                        </label>
+                        <span class="text-sm text-text-secondary">Published</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                <!-- Primary Actions -->
+                <div class="flex flex-col sm:flex-row gap-3 flex-1">
+                    <button type="submit" class="btn-primary flex-1 sm:flex-none">
+                        <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        Save Changes
+                    </button>
+                    <button type="button" class="btn-secondary flex-1 sm:flex-none" onclick="saveDraft()">
+                        <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3-3m0 0l-3 3m3-3v12"/>
+                        </svg>
+                        Save as Draft
+                    </button>
+                    <button type="button" class="btn-secondary flex-1 sm:flex-none" onclick="previewChanges()">
+                        <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                        Preview Changes
+                    </button>
+                </div>
+
+                <!-- Secondary Actions -->
+                <div class="flex gap-3">
+                    <button type="button" class="btn-secondary" onclick="cancelEdit()">Cancel</button>
+                    <button type="button" class="px-4 py-3 text-error hover:bg-error-50 rounded-lg transition-colors font-medium" onclick="deleteProduct()">
+                        <svg class="h-5 w-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                        </svg>
+                        Delete Product
+                    </button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <!-- Unsaved Changes Warning Modal -->
+    <div id="unsavedChangesModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-modal max-w-md w-full p-6">
+            <div class="flex items-center mb-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-warning-100 rounded-full flex items-center justify-center">
+                    <svg class="h-6 w-6 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                    </svg>
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-lg font-medium text-text-primary">Unsaved Changes</h3>
+                    <p class="text-text-secondary">You have unsaved changes. What would you like to do?</p>
+                </div>
+            </div>
+            <div class="flex gap-3 justify-end">
+                <button class="btn-secondary" onclick="discardChanges()">Discard Changes</button>
+                <button class="btn-primary" onclick="saveAndContinue()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-modal max-w-md w-full p-6">
+            <div class="flex items-center mb-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-error-100 rounded-full flex items-center justify-center">
+                    <svg class="h-6 w-6 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                    </svg>
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-lg font-medium text-text-primary">Delete Product</h3>
+                    <p class="text-text-secondary">Are you sure you want to delete this product? This action cannot be undone and will remove it from all buyer searches.</p>
+                </div>
+            </div>
+            <div class="flex gap-3 justify-end">
+                <button class="btn-secondary" onclick="closeDeleteModal()">Cancel</button>
+                <button class="bg-error text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors" onclick="confirmDelete()">Delete Product</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="successToast" class="hidden fixed top-4 right-4 bg-success text-white px-6 py-3 rounded-lg shadow-lg z-50 animation-slide-up">
+        <div class="flex items-center gap-2">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span id="successMessage">Changes saved successfully!</span>
+        </div>
+    </div>
+
+    <script>
+        let hasUnsavedChanges = false;
+        let originalFormData = {};
+
+        // Initialize form
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store original form data
+            const form = document.getElementById('editProductForm');
+            const formData = new FormData(form);
+            for (let [key, value] of formData.entries()) {
+                originalFormData[key] = value;
+            }
+
+            // Set up character counters
+            updateCharacterCount('productName', 'nameCount');
+            updateCharacterCount('description', 'descriptionCount');
+
+            // Set up real-time validation
+            setupFormValidation();
+        });
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function markFieldAsChanged(fieldName) {
+            hasUnsavedChanges = true;
+            const indicator = document.getElementById(fieldName + 'ChangeIndicator');
+            if (indicator) {
+                indicator.classList.remove('hidden');
+            }
+        }
+
+        function updateCharacterCount(inputId, countId) {
+            const input = document.getElementById(inputId);
+            const counter = document.getElementById(countId);
+            
+            input.addEventListener('input', function() {
+                counter.textContent = this.value.length;
+                markFieldAsChanged(inputId.replace('product', '').replace('Name', 'name'));
+            });
+        }
+
+        function setupFormValidation() {
+            const form = document.getElementById('editProductForm');
+            const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+
+            inputs.forEach(input => {
+                input.addEventListener('blur', validateField);
+                input.addEventListener('input', clearError);
+            });
+        }
+
+        function validateField(event) {
+            const field = event.target;
+            const errorElement = document.getElementById(field.name + 'Error');
+            
+            if (!field.value.trim()) {
+                field.classList.add('form-error');
+                if (errorElement) errorElement.classList.remove('hidden');
+                return false;
+            } else {
+                field.classList.remove('form-error');
+                if (errorElement) errorElement.classList.add('hidden');
+                return true;
+            }
+        }
+
+        function clearError(event) {
+            const field = event.target;
+            const errorElement = document.getElementById(field.name + 'Error');
+            
+            if (field.value.trim()) {
+                field.classList.remove('form-error');
+                if (errorElement) errorElement.classList.add('hidden');
+            }
+        }
+
+        function handleAdditionalImages(event) {
+            const files = event.target.files;
+            // Handle additional image uploads
+            console.log('Additional images selected:', files.length);
+            markFieldAsChanged('images');
+        }
+
+        function moveImageUp(index) {
+            console.log('Moving image up:', index);
+            markFieldAsChanged('images');
+        }
+
+        function removeImage(index) {
+            console.log('Removing image:', index);
+            markFieldAsChanged('images');
+        }
+
+        function togglePublishStatus() {
+            const checkbox = document.getElementById('publishStatus');
+            console.log('Publish status:', checkbox.checked ? 'Published' : 'Draft');
+            markFieldAsChanged('status');
+        }
+
+        function saveDraft() {
+            console.log('Saving as draft...');
+            showSuccessToast('Product saved as draft!');
+            hasUnsavedChanges = false;
+        }
+
+        function previewChanges() {
+            console.log('Opening preview...');
+            // Open preview in new tab or modal
+        }
+
+        function cancelEdit() {
+            if (hasUnsavedChanges) {
+                document.getElementById('unsavedChangesModal').classList.remove('hidden');
+            } else {
+                window.location.href = 'product_dashboard.html';
+            }
+        }
+
+        function deleteProduct() {
+            document.getElementById('deleteModal').classList.remove('hidden');
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').classList.add('hidden');
+        }
+
+        function confirmDelete() {
+            console.log('Deleting product...');
+            showSuccessToast('Product deleted successfully!');
+            setTimeout(() => {
+                window.location.href = 'product_dashboard.html';
+            }, 1500);
+        }
+
+        function discardChanges() {
+            hasUnsavedChanges = false;
+            document.getElementById('unsavedChangesModal').classList.add('hidden');
+            window.location.href = 'product_dashboard.html';
+        }
+
+        function saveAndContinue() {
+            document.getElementById('editProductForm').submit();
+        }
+
+        function showSuccessToast(message) {
+            const toast = document.getElementById('successToast');
+            const messageElement = document.getElementById('successMessage');
+            messageElement.textContent = message;
+            toast.classList.remove('hidden');
+            
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Form submission
+        document.getElementById('editProductForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate all fields
+            const form = e.target;
+            const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                if (!validateField({ target: input })) {
+                    isValid = false;
+                }
+            });
+
+            if (isValid) {
+                console.log('Form is valid, saving changes...');
+                showSuccessToast('Changes saved successfully!');
+                hasUnsavedChanges = false;
+                
+                // Redirect after successful save
+                setTimeout(() => {
+                    window.location.href = 'product_dashboard.html';
+                }, 1500);
+            } else {
+                console.log('Form has validation errors');
+            }
+        });
+
+        // Prevent accidental navigation
+        window.addEventListener('beforeunload', function(e) {
+            if (hasUnsavedChanges) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+
+        // Close modals when clicking outside
+        document.getElementById('unsavedChangesModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('deleteModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeDeleteModal();
+            }
+        });
+
+        // Price calculation
+        document.getElementById('price').addEventListener('input', updatePricePreview);
+        document.getElementById('discountPrice').addEventListener('input', updatePricePreview);
+
+        function updatePricePreview() {
+            const price = parseFloat(document.getElementById('price').value) || 0;
+            const discountPrice = parseFloat(document.getElementById('discountPrice').value) || 0;
+            
+            const displayPrice = document.getElementById('displayPrice');
+            const displayOriginalPrice = document.getElementById('displayOriginalPrice');
+            const discountBadge = document.getElementById('discountBadge');
+
+            if (discountPrice > 0 && discountPrice < price) {
+                displayPrice.textContent = `$${discountPrice.toFixed(2)}`;
+                displayOriginalPrice.textContent = `$${price.toFixed(2)}`;
+                displayOriginalPrice.classList.remove('hidden');
+                
+                const discountPercent = Math.round(((price - discountPrice) / price) * 100);
+                discountBadge.textContent = `${discountPercent}% OFF`;
+                discountBadge.classList.remove('hidden');
+            } else {
+                displayPrice.textContent = `$${price.toFixed(2)}`;
+                displayOriginalPrice.classList.add('hidden');
+                discountBadge.classList.add('hidden');
+            }
+        }
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
